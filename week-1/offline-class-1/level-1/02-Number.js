@@ -7,7 +7,7 @@ function explainParseInt(value) {
 // Example Usage for parseInt
 explainParseInt("42");
 explainParseInt("42px");
-explainParseInt("3.14");
+explainParseInt("Rs 3.14");
 
 function explainParseFloat(value) {
   console.log("Original Value:", value);
@@ -16,6 +16,11 @@ function explainParseFloat(value) {
 }
 
 // Example Usage for parseFloat
+// if string which has to be conveted into float or integer , does not start
+// with number then output will be NaN, Also function start parsing from begining 
+// and stops when it encounters a character the is not part of the valid number
+
 explainParseFloat("3.14");
 explainParseFloat("42");
-explainParseFloat("42px");
+explainParseFloat("rs42.4px");
+
