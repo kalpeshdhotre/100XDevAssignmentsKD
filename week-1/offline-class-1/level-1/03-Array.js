@@ -91,7 +91,7 @@ function findExample(arr) {
   });
   console.log("After find:", found);
 }
-findExample([1, 2, 3, 4, 5]);
+findExample([1, 2, 3, 4, 5, 4]);
 
 // sort()
 function sortExample(arr) {
