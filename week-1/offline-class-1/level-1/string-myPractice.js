@@ -17,7 +17,7 @@ function getLastIndexOf(str, target) {
    console.log("Given string is ", str);
    console.log("Last Index is ", str.lastIndexOf(target));
 }
-getLastIndexOf("Hello World of JS and of React", "of");
+getLastIndexOf("Hello of World of JS and of React", "of");
 
 // slice - this method in JS gives part of the string requested
 // str.slice(m,n) cuts the str from mth position till  n-th position of string.
@@ -32,7 +32,7 @@ getSlice("HelloJSWorld", -8, -5);
 // if any negative value is mention is start or end it will treat as ZERO
 function getSubstring(str, start, end) {
    console.log("Original string is ", str);
-   console.log(" Substring is ", str.substring(start, end));
+   console.log("Substring is ", str.substring(start, end));
 }
 getSubstring("Hello World", -8, 3);
 
