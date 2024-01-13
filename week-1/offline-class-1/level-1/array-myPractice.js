@@ -74,7 +74,7 @@ filterArray([1, 2, 3, 4, 5, 6, 7, 8, 11, 12]);
 function findInArray(arr) {
    console.log("Array given is", arr);
    let found = arr.find(function (element) {
-      return element == 19;
+      return element == 129;
    });
    console.log(`element found in array ${found} at position ${arr.indexOf(found)}`);
 

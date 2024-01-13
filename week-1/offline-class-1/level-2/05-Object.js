@@ -8,12 +8,15 @@ function objectMethods(obj) {
   let values = Object.values(obj);
   console.log("After Object.values():", values);
 
+  // it converts entries into array and returns
   let entries = Object.entries(obj);
   console.log("After Object.entries():", entries);
 
-  let hasProp = obj.hasOwnProperty("property");
+  // it check if property mention is exist in object or not
+  let hasProp = obj.hasOwnProperty("key3");
   console.log("After hasOwnProperty():", hasProp);
 
+  // if {} empty not use it will modify original object also
   let newObj = Object.assign({}, obj, { newProperty: "newValue" });
   console.log("After Object.assign():", newObj);
 
