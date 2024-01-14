@@ -10,8 +10,8 @@ function mathMethods(value) {
   let flooring = Math.floor(value);
   console.log("After floor():", flooring);
 
-  let randomValue = Math.random();
-  console.log("After random():", randomValue);
+  let randomValue = Math.random()*1000;
+  console.log("After random():", parseInt(randomValue));
 
   let maxValue = Math.max(5, 10, 15);
   console.log("After max():", maxValue);

@@ -12,10 +12,11 @@ function objectMethods(obj) {
   let entries = Object.entries(obj);
   console.log("After Object.entries():", entries);
 
-  // it check if property mention is exist in object or not
+  // it check if property passed, is exist in object or not
   let hasProp = obj.hasOwnProperty("key3");
   console.log("After hasOwnProperty():", hasProp);
 
+  // add new property to object
   // if {} empty not use it will modify original object also
   let newObj = Object.assign({}, obj, { newProperty: "newValue" });
   console.log("After Object.assign():", newObj);
