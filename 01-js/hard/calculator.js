@@ -42,12 +42,6 @@ class Calculator {
          throw new Error("Error");
       }
       this.result /= number;
-
-      // try {
-      //    this.result /= number;
-      // } catch (error) {
-      //    console.log(`error`);
-      // }
    }
 
    clear() {
