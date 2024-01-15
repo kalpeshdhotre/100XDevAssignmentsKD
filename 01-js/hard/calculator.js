@@ -37,7 +37,7 @@ class Calculator {
    }
 
    divide(number) {
-      if (number === 0) {
+      if (parseInt(number) == 0) {
          console.log("divide by zero error");
          throw new Error("Error");
       }
@@ -55,11 +55,14 @@ class Calculator {
    }
 
    calculate(expression) {
-      const cleanedExpression = expression.replace(/s+/g, "").trim();
+      const cleanedExpression = expression.replace(/s+/g, " ").trim();
       if (!/^[0-9+\-*/(). ]+$/.test(cleanedExpression)) {
          throw new Error("Invalid characters in the expression");
       }
       try {
+         if (cleanedExpression.includes("/ 0")) {
+            throw new error("Error");
+         }
          this.result = eval(cleanedExpression);
       } catch (error) {
          throw new Error("Invalid expression");

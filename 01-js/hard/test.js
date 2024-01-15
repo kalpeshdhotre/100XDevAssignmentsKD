@@ -1,5 +1,10 @@
-let numbers = [1,2,3,4,5,6]
+a = 10;
+b = 30;
 
-let itemIndex = 2;
+if (!(eval(a / b) == Infinity)) {
+   console.log("No error");
+}
 
-console.log(numbers[itemIndex]);
+if (eval(a / b) == -Infinity) {
+   console.log("negative divide by zero");
+}
