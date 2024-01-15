@@ -37,10 +37,17 @@ class Calculator {
    }
 
    divide(number) {
-      if (number == 0) {
+      if (number === 0) {
+         console.log("divide by zero error");
          throw new Error("Error");
       }
       this.result /= number;
+
+      // try {
+      //    this.result /= number;
+      // } catch (error) {
+      //    console.log(`error`);
+      // }
    }
 
    clear() {

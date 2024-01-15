@@ -1,11 +1,5 @@
-let fName = "Kalpesh";
+let numbers = [1,2,3,4,5,6]
 
-function checkName(name) {
-   if (name != "Kalpesh") {
-      console.log("error detected");
-      
-      throw new Error("Error");
-   }
-}
+let itemIndex = 2;
 
-checkName("Test");
+console.log(numbers[itemIndex]);
