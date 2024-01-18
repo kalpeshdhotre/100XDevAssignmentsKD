@@ -1,9 +1,10 @@
-let fName = "Kalpesh";
+const startTime = Date.now();
+let endTime = 0;
+let time = 0;
 
-function checkName(name) {
-   if (!name == "Kalpesh") {
-      throw new Error("name different");
-   }
-}
+setTimeout(() => {
+   endTime = Date.now();
+   time = endTime - startTime;
+}, 3000);
 
-checkName("Test");
+console.log(typeof(time));

@@ -19,3 +19,5 @@ describe("calculateTime function", () => {
     expect(difference).toBeLessThan(100);
   }, 100);
 });
+
+
