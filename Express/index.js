@@ -8,7 +8,9 @@ app.get("/", (req, res) => {
 });
 
 app.put("/write", (req, res) => {
+   const dataReceived = req.body;
    res.send(`Put request received`);
+   console.log(dataReceived);
 });
 
 app.post("/postRequest", (req, res) => {
