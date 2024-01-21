@@ -39,11 +39,39 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+
+let todoData = [
+   {
+      id: 1,
+      title: "first todo",
+      description: "get over first hump",
+   },
+   {
+      id: 2,
+      title: "second todo",
+      description: "get over second hump",
+   },
+];
+
+app.get("/todos", (req, res) => {
+   res.send(todoData);
+});
+
+app.get("/todos/:id", (req, res) => {
+   const todoID = todoData[req.params.id];
+   //  res.send(`Requested TODO is: ${todoData[todoID]}`);
+   res.json(todoID);
+});
+
+app.listen(port, () => {
+   console.log(`App is listening to port http://localhost:${port}/`);
+});
+
+module.exports = app;
