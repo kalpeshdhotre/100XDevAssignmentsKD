@@ -47,31 +47,79 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-let todoData = [
-   {
-      id: 1,
-      title: "first todo",
-      description: "get over first hump",
-   },
-   {
-      id: 2,
-      title: "second todo",
-      description: "get over second hump",
-   },
-];
+let todoData = [];
+// let todoData = [
+//    {
+//       id: 1,
+//       title: "first todo",
+//       description: "get over first hump",
+//    },
+//    {
+//       id: 2,
+//       title: "second todo",
+//       description: "get over second hump",
+//    },
+// ];
 
+// get all todos
 app.get("/todos", (req, res) => {
-   res.send(todoData);
+   res.status(200).json(todoData);
 });
 
+// get todo by id
 app.get("/todos/:id", (req, res) => {
-   const todoID = todoData[req.params.id];
-   //  res.send(`Requested TODO is: ${todoData[todoID]}`);
-   res.json(todoID);
+   const todoID = todoData.find((element) => element.id == req.params.id);
+
+   if (todoID == undefined) {
+      res.status(404).send(`element not found`);
+   } else {
+      res.status(200).json(todoID);
+   }
 });
 
-app.listen(port, () => {
-   console.log(`App is listening to port http://localhost:${port}/`);
+// add new todo
+app.post("/todos", (req, res) => {
+   // Fixed the order of parameters (req, res)
+   const newTodo = {
+      id: parseInt(Math.random() * 1000),
+      title: req.body.title,
+      description: req.body.description,
+   };
+   todoData.push(newTodo);
+   res.status(201).json(newTodo);
+});
+
+// update todo by id
+app.put("/todos/:id", (req, res) => {
+   const todoTOUpdate = todoData.find((element) => element.id == req.params.id);
+   const indexOfTodo = todoData.indexOf(todoTOUpdate);
+   if (todoTOUpdate == undefined) {
+      res.status(404).send(`ToDo ID not found`);
+   } else {
+      todoData[indexOfTodo].title = req.body.title;
+      todoData[indexOfTodo].description = req.body.description;
+      res.status(200).json(todoData[indexOfTodo]);
+   }
+});
+
+// delete todo by id
+app.delete("/todos/:id", (req, res) => {
+   const todoToDelete = todoData.find((element) => element.id == req.params.id);
+   const indexOfTodo = todoData.indexOf(todoToDelete);
+   if (todoToDelete == undefined) {
+      res.status(404).send(`ToDo ID not found`);
+   } else {
+      todoData.splice(indexOfTodo, 1);
+      res.status(200).json(todoData);
+   }
+});
+
+// app.listen(port, () => {
+//    console.log(`App is listening to port http://localhost:${port}/`);
+// });
+
+app.use((req, res, next) => {
+   res.status(404).send(`Wrong request`);
 });
 
 module.exports = app;
