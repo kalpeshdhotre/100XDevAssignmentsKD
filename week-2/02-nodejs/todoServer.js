@@ -47,21 +47,25 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+//  array to store the todo list data (in-memory)
+
 let todoData = [];
-// let todoData = [
-//    {
-//       id: 1,
-//       title: "first todo",
-//       description: "get over first hump",
-//    },
-//    {
-//       id: 2,
-//       title: "second todo",
-//       description: "get over second hump",
-//    },
-// ];
+/* let todoData = [
+   {
+      id: 1,
+      title: "first todo",
+      description: "get over first hump",
+   },
+   {
+      id: 2,
+      title: "second todo",
+      description: "get over second hump",
+   },
+];
+ */
 
 // get all todos
+
 app.get("/todos", (req, res) => {
    res.status(200).json(todoData);
 });
