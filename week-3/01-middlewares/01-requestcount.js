@@ -10,6 +10,7 @@ let requestCount = 0;
 // maintain a count of the number of requests made to the server in the global
 // requestCount variable
 
+// below middleware counts the number of requests made to the server
 app.use((req, res, next) => {
    requestCount++;
    next();
