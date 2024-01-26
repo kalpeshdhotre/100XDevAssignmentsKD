@@ -1,24 +1,36 @@
-let numberOfRequestsForUser = ["kalpesh", "test2", "test3"];
+const jwt = require("jsonwebtoken");
+const zod = require("zod");
+const jwtPassword = "secret";
 
-// const userId = "test";
+// const token = jwt.sign({ foo: "This is test of JWT Token " }, pass);
+// const time = new Date().getTime();
 
-// function functionCall(userId) {
-//    if (!numberOfRequestsForUser[userId]) {
-//       numberOfRequestsForUser[userId] = 1;
-//    } else {
-//       numberOfRequestsForUser[userId]++;
-//    }
+// console.log(token);
+
+// console.log(time);
+
+// console.log(" decoded from JWT : ", iat);
+
+// try {
+//    const decode = jwt.verify(token, pass);
+//    console.log(decode);
+// } catch (error) {
+//    console.log("error");
+//    console.log(error.message);
 // }
 
-// functionCall("test2");
-// functionCall("test2");
-// functionCall("test4");
+function signJwt(username, password) {
+   // Your code here
+   const userName = zod.string().email();
+   const pass = zod.string().min(6);
+   if (userName.safeParse(username).success && pass.safeParse(password).success) {
+      const token = jwt.sign({ username, password }, jwtPassword);
+      console.log(token);
 
-console.log(numberOfRequestsForUser);
+      return jwt.sign({ username, password }, jwtPassword);
+   } else {
+      return null;
+   }
+}
 
-numberOfRequestsForUser["test2"]++;
-// numberOfRequestsForUser["test2"] = `value2`;
-
-console.log(numberOfRequestsForUser);
-console.log(numberOfRequestsForUser.length);
-console.log(typeof numberOfRequestsForUser);
+signJwt("kalpesh@hotmail.com", "abcd1234");
