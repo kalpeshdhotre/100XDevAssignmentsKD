@@ -1,36 +1,26 @@
-const jwt = require("jsonwebtoken");
-const zod = require("zod");
-const jwtPassword = "secret";
+const mongoose = require("mongoose");
 
-// const token = jwt.sign({ foo: "This is test of JWT Token " }, pass);
-// const time = new Date().getTime();
+async function main() {
+   // connect to the database
+   await mongoose.connect("mongodb://localhost:27017/test");
 
-// console.log(token);
+   // define a schema - a blueprint for the data
+   const User = mongoose.model("User", { name: String });
 
-// console.log(time);
+   // create a new user with data
+   const user = await User.findOne({ name: "Jane_replaced" });
+   const user2 = await User.findById("65b49f0f7a9fad838615eda9");
 
-// console.log(" decoded from JWT : ", iat);
+   await user.save(); // save the user to the database
 
-// try {
-//    const decode = jwt.verify(token, pass);
-//    console.log(decode);
-// } catch (error) {
-//    console.log("error");
-//    console.log(error.message);
-// }
+   user.name = "Jane_replaced_v2"; // change the name
+   user2.name = "Jane_replaced_v4"; // change the name
 
-function signJwt(username, password) {
-   // Your code here
-   const userName = zod.string().email();
-   const pass = zod.string().min(6);
-   if (userName.safeParse(username).success && pass.safeParse(password).success) {
-      const token = jwt.sign({ username, password }, jwtPassword);
-      console.log(token);
+   await user.save(); // save the user again
 
-      return jwt.sign({ username, password }, jwtPassword);
-   } else {
-      return null;
-   }
+   await user2.save();
+   console.log("saved!");
+   await mongoose.disconnect();
 }
 
-signJwt("kalpesh@hotmail.com", "abcd1234");
+main();
