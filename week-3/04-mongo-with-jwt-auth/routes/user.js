@@ -61,12 +61,41 @@ router.get("/courses", async (req, res) => {
    }
 });
 
-router.post("/courses/:courseId", userMiddleware, (req, res) => {
+router.post("/courses/:courseId", userMiddleware, async (req, res) => {
    // Implement course purchase logic
+   const courseID = req.params.courseId;
+   const username = req.decodedValue;
+   try {
+      await User.updateOne(
+         { username: username },
+         {
+            $push: {
+               purchasedCourses: courseID,
+            },
+         }
+      );
+      res.json({
+         msg: "Purchase Complete",
+      });
+   } catch (error) {
+      res.json("error occured");
+   }
 });
 
-router.get("/purchasedCourses", userMiddleware, (req, res) => {
+router.get("/purchasedCourses", userMiddleware, async (req, res) => {
    // Implement fetching purchased courses logic
+   // const username = req.decodedValue;
+   try {
+      const user = await User.findOne({ username: req.decodedValue });
+      const myCourses = await Course.find({
+         _id: {
+            $in: user.purchasedCourses,
+         },
+      });
+      res.json({ myCourses: myCourses });
+   } catch (error) {
+      res.json("error");
+   }
 });
 
 module.exports = router;

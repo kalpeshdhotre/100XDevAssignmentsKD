@@ -6,7 +6,8 @@ function userMiddleware(req, res, next) {
    const token = bearerToken.split(" ")[1];
    try {
       const decodedToken = jwt.verify(token, "abcd");
-      if (decodedToken.username) {
+      if (decodedToken) {
+         req.decodedValue = decodedToken;
          next();
       } else {
          res.json("Authentication failed");
