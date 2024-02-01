@@ -1,5 +1,5 @@
 # .gitignore file
 01-js/node_modules/
 node_modules/
-React/public/
-React/src/
+React/class4-2/FirstReactProject
+# React\class4-2\FirstReactProject
