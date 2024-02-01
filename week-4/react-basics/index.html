@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <script>
+         let buttonId = 1;
+         function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+
+            // const todo = (document.getElementById("container").innerHTML = "asdss");
+            let newTitle = document.createElement("h3");
+            let newDescription = document.createElement("h3");
+            let newButton = document.createElement("button");
+
+            newTitle.textContent = title;
+            newDescription.textContent = description;
+            newButton.textContent = "Mark as Done";
+            newButton.setAttribute("onclick", "taskDone(this.id)");
+            newButton.setAttribute("id", buttonId);
+            buttonId += buttonId;
+
+            document.getElementById("container").appendChild(newTitle);
+            document.getElementById("container").appendChild(newDescription);
+            document.getElementById("container").appendChild(newButton);
+         }
+         function taskDone(id) {
+            document.getElementById(id).innerHTML = "Completed";
+         }
+      </script>
+      <style>
+         body {
+            background-color: rgb(58, 58, 58);
+         }
+      </style>
+   </head>
+   <body>
+      <div>
+         <input id="title" type="text" placeholder="" />
+         <br /><br />
+         <input id="description" type="text" placeholder="" />
+         <br /><br />
+         <button onclick="addTodo()">Add todo</button>
+         <div id="container"></div>
+      </div>
+   </body>
+</html>
