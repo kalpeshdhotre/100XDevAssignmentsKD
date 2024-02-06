@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 
 app.post("/todos", async (req, res) => {
    const payload = req.body;
@@ -26,7 +26,7 @@ app.post("/todos", async (req, res) => {
 });
 
 app.get("/todos", async (req, res) => {
-   const allTodos = await Todo.find();
+   const allTodos = await Todo.find({});
    res.json(allTodos);
 });
 

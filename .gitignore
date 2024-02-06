@@ -1,7 +1,7 @@
 # .gitignore file
 01-js/node_modules/
 node_modules/
-React/class4-2/FirstReactProject
+React/class4-2/FirstReactProject/node_modules
 # React\class4-2\FirstReactProject
 TODOApp\backend\node_modules
 TODOApp\frontend\node_modules
