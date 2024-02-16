@@ -17,9 +17,9 @@ const Userform = ({ onSave }) => {
                <span className="mr-2">Name: </span>
                <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} className="ml-auto appearance-none border border-gray-300 rounded-md py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-indigo-500 focus:text-indigo-500" />
             </label>
-            <label htmlFor="text" className="m-2 flex items-center">
+            <label htmlFor="Description" className="m-2 flex items-center">
                <span className="mr-2">Description: </span>
-               <input type="text" id="email" name="email" value={description} onChange={(e) => setDescription(e.target.value)} className="ml-auto appearance-none border border-gray-300 rounded-md py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-indigo-500 focus:text-indigo-500" />
+               <input type="text" id="Description" name="Description" value={description} onChange={(e) => setDescription(e.target.value)} className="ml-auto appearance-none border border-gray-300 rounded-md py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-indigo-500 focus:text-indigo-500" />
             </label>
             {/* <label htmlFor="Interests" className="m-2 flex items-center">
                <span className="mr-2">My interests:</span>
