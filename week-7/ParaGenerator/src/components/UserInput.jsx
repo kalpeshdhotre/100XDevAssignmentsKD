@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
 import { para } from "../store/atoms/para";
 
 export default function () {
@@ -10,7 +10,7 @@ export default function () {
 
    const setParagraphSize = (e) => {
       setNumber(e.target.value);
-      console.log(number);
+      // console.log(number);
    };
 
    const generatePara = () => {
