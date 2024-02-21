@@ -11,19 +11,26 @@ function App() {
       <>
          <RecoilRoot>
             <Buttons />
+            <ColorSetter />
          </RecoilRoot>
       </>
    );
 }
 
-function Buttons() {
-   const [color, setColor] = useRecoilState(customColor);
-   // const color = useRecoilValue(customColor);
-   // const setColor = useRecoilState(customColor);
-   console.log("re-rendered");
+function ColorSetter() {
+   const color = useRecoilValue(customColor);
    useEffect(() => {
       document.body.style.background = color;
    }, [color]);
+   return;
+}
+
+function Buttons() {
+   // const [color, setColor] = useRecoilState(customColor);
+   // const color = useRecoilValue(customColor);
+   const setColor = useSetRecoilState(customColor);
+   console.log(" Buttons re-rendered");
+
    return (
       <div>
          <button
